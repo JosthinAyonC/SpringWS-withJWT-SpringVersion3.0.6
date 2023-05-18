@@ -41,7 +41,6 @@ public class UsuarioService {
         }
         Usuario usuarioEditado = optionalUsuario.get();
         copiarCamposNoNulos(user, usuarioEditado);
-        
         return usuarioRepository.save(usuarioEditado);
     }
 
@@ -73,6 +72,10 @@ public class UsuarioService {
         }
         if (fuente.getStatus() != null) {
             destino.setStatus(fuente.getStatus());
+        }
+        if (fuente.getRoles().size()>0) {
+            List<Roles> roles = fuente.getRoles().stream().map(role -> rolesRepository.findByName(role.getName())).collect(Collectors.toList());
+            destino.setRoles(roles);
         }
     }
 

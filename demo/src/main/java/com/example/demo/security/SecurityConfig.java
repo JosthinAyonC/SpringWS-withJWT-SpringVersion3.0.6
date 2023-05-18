@@ -51,7 +51,8 @@ public class SecurityConfig  {
         .and()
         .authorizeHttpRequests()//Toda peticion http debe ser autorizada
         .requestMatchers("/api/auth/**").permitAll()
-        .requestMatchers(HttpMethod.GET, "/api/usuario/***").hasAuthority("ADMIN")
+        .requestMatchers(HttpMethod.PUT, "/api/usuario/**").hasAuthority("ADMIN")
+        .requestMatchers(HttpMethod.POST, "/api/usuario").hasAuthority("ADMIN")
         .anyRequest().authenticated()//cualquier otra peticion debe ser autenticada
         .and()
         .httpBasic();
