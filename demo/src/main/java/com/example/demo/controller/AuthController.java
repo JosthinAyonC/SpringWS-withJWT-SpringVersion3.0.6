@@ -29,9 +29,16 @@ public class AuthController {
     @Autowired
     private UsuarioService usuarioService;
     
-    @PostMapping("register")
-    public ResponseEntity<String> register(@RequestBody DtoRegistro dtoRegistro) {
-        return usuarioService.registrar(dtoRegistro);
+    @PostMapping("defaultRegister")
+    public ResponseEntity<String> registerDefault(@RequestBody DtoRegistro dtoRegistro) {
+        String role="USER";
+        return usuarioService.registrar(dtoRegistro,  role);
+    }
+
+    @PostMapping("adminRegister")
+    public ResponseEntity<String> registerAdmin(@RequestBody DtoRegistro dtoRegistro) {
+        String role="ADMIN";
+        return usuarioService.registrar(dtoRegistro,  role);
     }
 
     @PostMapping("login")

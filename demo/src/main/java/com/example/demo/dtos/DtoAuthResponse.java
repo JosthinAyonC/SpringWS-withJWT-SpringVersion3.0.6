@@ -17,6 +17,12 @@ public class DtoAuthResponse {
         this.accesToken = accesToken;
     }
 
-    
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
   
 }
